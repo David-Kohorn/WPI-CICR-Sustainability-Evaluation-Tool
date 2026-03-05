@@ -1,0 +1,417 @@
+/* there is some stuff that isnt used */
+
+:root {
+  --primary: #0f4c3a;
+  --accent: #c9a227;
+  --bg: #f4f6f5;
+  --text: #1f2933;
+  --muted: #6b7280;
+  --bright: #3fb458;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  padding: 96px 16px 96px;
+ 
+}
+
+section {
+  width: 100%;
+  
+}
+
+.preamble-important {
+  font-size: 1.1rem;
+}
+
+.card {
+  background: white;
+  padding: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+h1,
+h2 {
+  color: var(--primary);
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.6;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+button {
+  margin-top: 24px;
+  padding: 12px 20px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0c3d2f;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+}
+
+.slider {
+  width: 75%;
+  display: block;
+  margin-top: 8px;
+}
+
+#sliderValue {
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.top-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-bottom: 1px solid #e5e7eb;
+  z-index: 1000;
+}
+
+.top-left {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1;
+  white-space: normal;    
+  flex: 0 0 30%;         
+}
+
+
+.top-center {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%; 
+  top: 50%;                  
+  transform: translate(-50%, -50%); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 0 0 20%;  
+  text-align: center;
+}
+
+
+.category-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1f2937;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  font-size: 0.85rem;
+}
+
+.progress-text {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+#progressBarVisual {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  accent-color: #0f4c3a;
+  background-color: #c2c2c2;
+  overflow: hidden;
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.top-right button {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+  margin: 0;
+  background-color: white;
+  color: #1f2937;
+  /* FORCE TEXT COLOR */
+  border: 1px solid #1f2937;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.bottom-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background-color: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 0 24px;
+  z-index: 1000;
+}
+
+/* Logos */
+.footer-logo {
+  height: 40px;
+  width: auto;
+  max-width: 220px;
+}
+
+/* Alignment */
+.footer-left {
+  justify-self: start;
+}
+
+.footer-center {
+  justify-self: center;
+  text-align: center;
+}
+
+.footer-right {
+  justify-self: end;
+}
+
+#pdfRadarWrapper {
+  width: 700px;
+  height: 700px;
+  margin: 0 auto;
+}
+
+#pdfRadar {
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard {
+  position: relative;
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+
+  width: 100%;
+  max-width: 1400px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  row-gap: 8px;
+  column-gap: 96px;
+
+  grid-template-areas:
+    "title   title"
+    "chart   scores"
+    "button  button";
+}
+
+#resultsTitle {
+  grid-area: title;
+}
+
+#chartPanel {
+  
+  width: 100%;
+  max-width: 500px;    /* or whatever your current max */
+  height: 500px;        /* FIXED height so chart doesn't shift */
+  margin: 0 auto;
+}
+
+#radarChart {
+  grid-area: chart;
+  width: 100% ;
+  height: 100%
+}
+
+#scoreOutput {
+  display: grid;
+  grid-area: scores;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+
+#categoryInfoOutput {
+  grid-area: scores;
+  max-height: 500px;       /* match chart height */
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #ffffff;
+}
+
+/* Individual score block */
+.score-card {
+  padding: 12px;
+}
+
+/* Big number */
+.score-number {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--bright);
+}
+
+/* Smaller category label */
+.score-label {
+  font-size: 14px;
+  margin-top: 6px;
+  color: #1f2937;
+}
+
+#backToScoresBtn {
+  grid-area: button;
+  justify-self: right;
+}
+
+#downloadPdf {
+  grid-area: button;
+  justify-self: left;
+}
+
+.score-card.clickable:hover .score-number,
+.score-card.clickable:hover .score-label {
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+@media (max-width: 1050px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "chart"
+      "scores"
+      "button";
+    gap: 64px;
+  }
+}
+
+.searchable-wrapper {
+  position: relative;
+  width: 75%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.search-results {
+  position: absolute;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background: white;
+  z-index: 1000;
+}
+
+.search-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.search-item:hover {
+  background-color: #f0f0f0;
+}
+
+.text-input {
+  width: 75%;
+  max-width: 500px;
+  padding: 12px 14px;
+  margin-top: 15px;
+
+  font-size: 16px;
+  font-family: inherit;
+
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  background-color: #ffffff;
+}
+
+/* Focus state */
+.text-input:focus {
+  border-color: #10b981;          /* same green family as radar */
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+/* Placeholder */
+.text-input::placeholder {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.product-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 10px 0 20px 0;
+  color: #1f2937;
+}
+
+#productNameTitle {
+  grid-area: product;
+  text-align: left;
+  margin-bottom: 4px;
+}
+
+#resultsTitle {
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
