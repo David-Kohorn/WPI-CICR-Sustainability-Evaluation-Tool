@@ -48,7 +48,8 @@
     <section id="landing"> 
       <div class="card"> 
         <h1 id="title"></h1> 
-        <p class="preamble-important" id="preambleIntro"></p> 
+        <p class="preamble-important" id="preambleIntro"></p>
+        <a  href="manuals/user_manual_es.pdf" target="_blank" id="userManualLink"></a> 
         <p class="muted" id="preambleIntroDetails"></p> 
         <p class="preamble-important" id="preambleConsent"></p> 
         <p class="muted" id="preambleConsentDetails"></p> 

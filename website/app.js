@@ -31,6 +31,7 @@ const DOM = {
   preambleIntroDetails: document.getElementById("preambleIntroDetails"),
   preambleConsent: document.getElementById("preambleConsent"),
   preambleConsentDetails: document.getElementById("preambleConsentDetails"),
+  userManualLink: document.getElementById("userManualLink"),
   startBtn: document.getElementById("startBtn"),
   esBtn: document.getElementById("esBtn"),
   enBtn: document.getElementById("enBtn"),
@@ -97,6 +98,7 @@ function updateUI() {
   DOM.preambleIntroDetails.textContent = UI_TEXT[state.language].preambleIntroDetails;
   DOM.preambleConsent.textContent = UI_TEXT[state.language].preambleConsent;
   DOM.preambleConsentDetails.textContent = UI_TEXT[state.language].preambleConsentDetails;
+  DOM.userManualLink.textContent = UI_TEXT[state.language].userManualLinkText;
   DOM.startBtn.textContent = UI_TEXT[state.language].start;
   DOM.resultsTitle.textContent = UI_TEXT[state.language].results;
   DOM.downloadPdfBtn.textContent = UI_TEXT[state.language].download;
@@ -114,6 +116,12 @@ function updateUI() {
 function setLanguage(lang) {
   state.language = lang;
   updateUI();
+
+  // Change link for the user manual pdf
+  if (!DOM.landing.hidden) {
+    const hrefString = "manuals/user_manual_" + state.language + ".pdf";
+    DOM.userManualLink.href = hrefString;
+  }
 
   // If quiz is visible, re-render current question in new language
   if (!DOM.quiz.hidden) {
@@ -175,6 +183,13 @@ function renderQuestion() {
   const q = questions[state.index];
   DOM.question.textContent = q.text[state.language];
   DOM.answers.innerHTML = ""; // clear previous inputs
+
+  if (q.is_demographic) {
+    DOM.skipBtn.hidden = true;
+  }
+  else {
+    DOM.skipBtn.hidden = false;
+  }
 
   const renderer = questionRenderers[q.type];
   if (renderer) {
@@ -267,7 +282,7 @@ const questionRenderers = {
     const input = document.createElement("input");
     input.type = "text";
     input.maxLength = 250;
-    input.placeholder = state.language === "es" ? "Escriba aqui..." : "Type here...";
+    input.placeholder = state.language === "es" ? "Escriba aquí..." : "Type here...";
     input.classList.add("text-input");
 
     // restore value if present
@@ -760,7 +775,6 @@ function answersScoresToJSON() {
   return {answersList, categoryScoresList};
 }
 
-// TODO Called when user finishes last question
 function finish() {
   calculateScores();
 
